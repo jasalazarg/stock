@@ -26,12 +26,13 @@ SECRET_KEY = 'django-insecure-@4)aw#z%lcz#h@22ljef_l5j6b4vjd7s87wz4es^$at(^mgfvg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['44.194.7.13','localhost','127.0.0.1' ]
+ALLOWED_HOSTS = ['44.194.7.13','localhost','127.0.0.1','18.207.25.202' ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,9 +42,11 @@ INSTALLED_APPS = [
     'crudrest.apps.CrudrestConfig',
     'rest_framework'
 
+
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,6 +55,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://44.194.7.13:8000",
+    "http://44.194.7.13",
+    #agregar a ventas
+    "http://18.207.25.202",
+]
+
 
 ROOT_URLCONF = 'stock.urls'
 
@@ -108,9 +119,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Santiago'
 
 USE_I18N = True
 
