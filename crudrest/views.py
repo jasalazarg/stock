@@ -95,4 +95,3 @@ def Prod_ProvEliminar(request, pk):
     prod_prov.delete()
 
     return Response('Eliminado')
-

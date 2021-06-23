@@ -15,5 +15,3 @@ urlpatterns = [
     path('prd_prv_actualizar/<str:pk>/', views.Prod_ProvActualizar, name="actualizar"),
     path('prd_prv_eliminar/<str:pk>/', views.Prod_ProvEliminar, name="eliminar"),
 ]
-
-
