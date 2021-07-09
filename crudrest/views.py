@@ -98,13 +98,13 @@ def Prod_ProvEliminar(request, pk):
 #categorias para ventas 
 @api_view(['GET'])
 def Cat_Lista(request):
-    categoria = Prod_Prov.objects.all()
+    categoria = Categoria.objects.all()
     serializer = CategoriaSerializer(categoria, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def Cat_Detalle(request, pk):
-    categoria = Prod_Prov.objects.get(id=pk)
+    categoria = Categoria.objects.get(id=pk)
     serializer = CategoriaSerializer(categoria, many=False)
 
     return Response(serializer.data)
@@ -121,7 +121,7 @@ def Cat_Crear(request):
 
 @api_view(['POST'])
 def Cat_Actualizar(request, pk):
-    categoria = Prod_Prov.objects.get(id=pk)
+    categoria = Categoria.objects.get(id=pk)
     serializer = CategoriaSerializer(instance=categoria, data=request.data)
 
     if serializer.is_valid():
