@@ -1,23 +1,15 @@
-from django.db import models
+
 from django.db import models
 from django.utils import timezone
 
-
 class Bodega(models.Model):
-
-    descripcion = models.CharField(max_length=100)
-
-
-
+    nom_bodega = models.CharField(max_length=100)
 class Categoria(models.Model):
-
-    descripcion = models.CharField(max_length=100)
-
-
-class Moneda(models.Model):
-
-    descripcion = models.CharField(max_length=100, default='DEFAULT VALUE')
-
+    nom_categoria = models.CharField(max_length=100)
+class Categoria_prov(models.Model):
+    nom_categoria = models.CharField(max_length=100)
+class Bodega_prov(models.Model):
+    nom_bodega = models.CharField(max_length=100)
 class Productos(models.Model):
     cod_prod = models.BigIntegerField()
     descripcion = models.CharField(max_length=120, default='DESCRIPCION DEL PRODUCTO')
@@ -28,7 +20,6 @@ class Productos(models.Model):
     imagen = models.ImageField(upload_to="productos", null = True)
     bodega = models.ForeignKey(Bodega, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-
 class Prod_Prov(models.Model):
     cod_prod = models.BigIntegerField()
     descripcion = models.CharField(max_length=120, default='DESCRIPCION DEL PRODUCTO')
@@ -37,9 +28,10 @@ class Prod_Prov(models.Model):
     stock_dev = models.IntegerField()
     imagen = models.ImageField(upload_to="prod_prov", null=True)
     fec_adq = models.DateTimeField(auto_now_add=True)
-    bodega = models.ForeignKey(Bodega, on_delete=models.CASCADE)
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    moneda = models.ForeignKey(Moneda, on_delete=models.CASCADE)
+    bodega = models.ForeignKey(Bodega_prov, on_delete=models.CASCADE)
+    categoria = models.ForeignKey(Categoria_prov, on_delete=models.CASCADE)
+    moneda = models.TextChoices('moneda','CLP USD EUR CNY JPY')
+    #usd = Dolar del Imperialismo terrorista saqueador de petroleo, clp = peso golpista violador de DDHH chileno, cny = yuan chino comunista anti-libertad jpy = Yen japones kawaii
 
 
 
@@ -50,4 +42,3 @@ class Prod_Prov(models.Model):
         return self.descripcion
 
 
-# Create your models here.
