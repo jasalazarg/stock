@@ -23,16 +23,14 @@ class Productos(models.Model):
 class Prod_Prov(models.Model):
     cod_prod = models.BigIntegerField()
     descripcion = models.CharField(max_length=120, default='DESCRIPCION DEL PRODUCTO')
-    pr_costo= models.IntegerField()
+    precio = models.IntegerField()
     stock_vta = models.IntegerField()
     stock_dev = models.IntegerField()
     imagen = models.ImageField(upload_to="prod_prov", null=True)
     fec_adq = models.DateTimeField(auto_now_add=True)
     bodega = models.ForeignKey(Bodega_prov, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria_prov, on_delete=models.CASCADE)
-    moneda = models.TextChoices('moneda','CLP USD EUR CNY JPY')
-    #usd = Dolar del Imperialismo terrorista saqueador de petroleo, clp = peso golpista violador de DDHH chileno, cny = yuan chino comunista anti-libertad jpy = Yen japones kawaii
-
+    
 
 
     class Meta:
