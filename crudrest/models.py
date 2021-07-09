@@ -13,7 +13,7 @@ class Bodega_prov(models.Model):
 class Productos(models.Model):
     cod_prod = models.BigIntegerField()
     descripcion = models.CharField(max_length=120, default='DESCRIPCION DEL PRODUCTO')
-    pr_vta = models.IntegerField()
+    precio = models.IntegerField()
     stock_vta = models.IntegerField()
     stock_dev = models.IntegerField()
     fec_adq = models.DateTimeField(auto_now_add=True)
